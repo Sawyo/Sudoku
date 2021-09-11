@@ -31,7 +31,7 @@ public class main extends tables{
 		System.out.println();
 	
 		System.out.print("     Qual o numero da dificuldade que deseja? : ");
-		nivelDificuldade = teclado.nextByte();
+		nivelDificuldade = Integer.parseInt(teclado.next());
 		
 		
 		
@@ -39,9 +39,9 @@ public class main extends tables{
 			if (nivelDificuldade > 0 && nivelDificuldade < 4)
 				answer = false;
 			else {
-				System.out.println("     Aceitamos somente de 1 á 3");
+				System.out.println("     " + mensagemSistema + "Aceitamos somente de 1 á 3" + reset);
 				System.out.print("     Tente novamente: ");
-				nivelDificuldade = teclado.nextByte();
+				nivelDificuldade = Integer.parseInt(teclado.next());
 			}
 		} while(answer);
 	
@@ -63,10 +63,54 @@ public class main extends tables{
 		constructor_class constructor_class = new constructor_class();
 		slots = constructor_class.defineOcupacao(slots, sudoku);
 		
+		do {
+			
+			answer = true;
+			System.out.println();
+			constructor_class.exibeMatriz(sudoku);
+			
+			
+			System.out.println("Especifique a coluna a linha e o numero respectivamente.");
+			
+			do {
+				
+				System.out.print("Linha: ");
+				linha = Integer.parseInt(teclado.next()) - 1;
+				
+				System.out.print("Coluna: ");
+				coluna = Integer.parseInt(teclado.next()) - 1;
+				
+				System.out.println("Linha: ");
+				numeroEscolhido = Integer.parseInt(teclado.next());
+				
+				
+				
+				if (linha < 0 || linha > 8 || coluna < 0 || coluna > 8 || numeroEscolhido < 1 || numeroEscolhido > 9)
+					System.out.println(mensagemSistema + "Somente numeros de 1 à 9 são validos." + reset);
+				else
+					answer = false;
+				
+			}while(answer);
+			
+			answer = true;
+			
+			
+			if(slots[linha][coluna]) {
+				System.out.println(mensagemSistema + "Não pode colocar nada aqui." + reset);
+				constructor_class.permPositions(slots, sudoku);
+			} else {
+				constructor_class.blockMove(sudoku, linha, coluna, numeroEscolhido);
+			}
+			
+			if (constructor_class.checkTable(tipicoSudoku))
+				answer = false;
+			
+			constructor_class.pressEnter();
+			
+		}while(answer);
 		
+		System.out.println("Você terminou o jogo.^^");
 		
 	}
-
-	
 
 }
