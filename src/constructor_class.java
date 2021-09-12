@@ -1,29 +1,47 @@
 import java.util.Scanner;
 
-public class constructor_class {
+public class constructor_class extends tables{
 	
 	public static boolean[][] defineOcupacao(boolean[][] slots, int[][] matriz) {
+		
         for (int i = 0; i < matriz.length; i++) {
+        	
             for (int j = 0; j < matriz[0].length; j++) {
+            	
                 if (matriz[i][j] != 0)
                     slots[i][j] = true;
+                
             }
+            
         }
+        
         return slots;
     }
 	
 	
 	public static void exibeMatriz(int[][] matriz) {
+		
+		System.out.println(RED_BACKGROUND + "                           " + RESET);
         for (int i = 0; i < matriz.length; i++) {
-            System.out.print("L" + (i+1) + " - ");
+        	
+            System.out.print(RED_BACKGROUND + "L" + (i+1) + " - " + RESET);
+            
             for (int j = 0; j < matriz.length; j++) {
-                System.out.print(matriz[i][j] + " ");
-                if (j == 2 || j == 5) System.out.print("| ");
+            	
+                System.out.print( BLACK + WHITE_BACKGROUND + matriz[i][j] + " " + RESET);
+                if (j == 2 || j == 5) System.out.print(RED_BACKGROUND + "  " + RESET);
+                
             }
+            
             System.out.println();
+            
             if (i == 2 || i == 5)
-                System.out.print("     ------|-------|------\n");
+            	System.out.print(RED_BACKGROUND + "                           \n" + RESET);
+            
         }
+        
+        System.out.println(RED_BACKGROUND + "                           " + RESET);
+        
     }
 	
 	
@@ -58,14 +76,12 @@ public class constructor_class {
 	
 	
 	public static void permPositions(boolean [][] slots, int[][] matriz) {
-        String reset = "\u001B[0m";
-        String vermelhoFundoAzul = "\u001B[31;46m";
-
+        
         for (int i = 0; i < matriz.length; i++) {
             System.out.print((i+1) + " - ");
             for (int j = 0; j < matriz.length; j++) {
                     if (slots[i][j])            
-                        System.out.print(vermelhoFundoAzul + matriz[i][j] + " " + reset);
+                        System.out.print(RED_BACKGROUND_BRIGHT + matriz[i][j] + " " + RESET);
                     else
                         System.out.print(matriz[i][j] + " ");
                         
@@ -122,16 +138,12 @@ public class constructor_class {
     
     public static void blockMove(int[][] matriz, int linha, int coluna, int numero) {
         int[][] novaMatriz = copiaMatriz(matriz);
-        String reset = "\u001B[0m";
-        String vermelhoFundoAzul = "\u001B[31;46m";
-        
-        String brancoFundoVermelho = "\u001B[41;43m";
         
         //cada par representa uma posicao a se destacar
         //jogada do usuario / bloqueio na linha / bloqueio na coluna / bloqueio no box
         int[] posicoesDestaque = {linha, coluna, -1, -1, -1, -1, -1, -1};
         
-        System.out.println("    " + brancoFundoVermelho + " Movimento inválido! " + reset);
+        System.out.println("    " + RED_BACKGROUND_BRIGHT + " Movimento inválido! " + RESET);
         
         novaMatriz[linha][coluna] = numero;
 
@@ -170,7 +182,7 @@ public class constructor_class {
                     
                     //if (posicoesDestaque[0] == i && posicoesDestaque[1] == j || posicoesDestaque[2] == i && posicoesDestaque[3] == j || posicoesDestaque[4] == i && posicoesDestaque[5] == j || posicoesDestaque[6] == i && posicoesDestaque[7] == j)
                     if (destaques)            
-                        System.out.print(vermelhoFundoAzul + novaMatriz[i][j] + " " + reset);
+                        System.out.print(GREEN_BACKGROUND_BRIGHT + novaMatriz[i][j] + " " + RESET);
                     else
                         System.out.print(novaMatriz[i][j] + " ");
                         

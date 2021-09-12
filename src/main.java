@@ -1,4 +1,3 @@
-import java.lang.reflect.Constructor;
 import java.util.Scanner;
 public class main extends tables{
 	
@@ -8,56 +7,93 @@ public class main extends tables{
 		int linha = -1, coluna = -1, numeroEscolhido = -1, nivelDificuldade = -1; // Valores Base Iniciais
 		Scanner teclado = new Scanner(System.in);
 		boolean answer = true;    //Garante que os numeros digitados sejam validados 
-		String reset = "\u001B[0m";     //define cores
-		String mensagemSistema = "\u001B[41;43m"; //define cores
 		int[][] sudoku = new int[9][9];        //Matriz que irá ser utilizada
 		boolean[][] slots = new boolean[9][9];          //Posições predeterminadas não podem ser alteradas
 		
 		
 	
-		System.out.println("+---------------------------------------------------+");
-		System.out.println("|                      --------                     |");
-		System.out.println("|                       SUDOKU                      |");
-		System.out.println("|                      --------                     |");
-		System.out.println("+---------------------------------------------------+");
-		System.out.println();
-		System.out.println("                     DIFICULDADE");
-		System.out.println();
-		System.out.println("  1 - Facil");
-		System.out.println("  2 - Medio");
-		System.out.println("  3 - Dificil");
-		System.out.println();
-		System.out.println("+---------------------------------------------------+");
-		System.out.println();
-	
-		System.out.print("     Qual o numero da dificuldade que deseja? : ");
-		nivelDificuldade = Integer.parseInt(teclado.next());
+		System.out.println(RED_BACKGROUND + "                                                     " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                      --------                     " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                       SUDOKU                      " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                      --------                     " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + "                                                     " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                    DIFICULDADE                    " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "  1 - Facil                                        " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "  2 - Medio                                        " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "  3 - Dificil                                      " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + "                                                     " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "    Qual o numero da dificuldade que deseja?       " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+		System.out.println(RED_BACKGROUND + "                                                     " + RESET);
 		
+		System.out.println();
+		System.out.print("> ");
+		nivelDificuldade = Integer.parseInt(teclado.next());
+		System.out.println();
+
 		
 		
 		do {
 			if (nivelDificuldade > 0 && nivelDificuldade < 4)
 				answer = false;
 			else {
-				System.out.println("     " + mensagemSistema + "Aceitamos somente de 1 á 3" + reset);
-				System.out.print("     Tente novamente: ");
+				System.out.println(RED_BACKGROUND + "                                                     " + RESET);
+				System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+				System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "    Aceitamos somente de 1 á 3                     " + RESET + RED_BACKGROUND + " " + RESET);
+				System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "    Tente novamente:                               " + RESET + RED_BACKGROUND + " " + RESET);
+				System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+				System.out.println(RED_BACKGROUND + "                                                     " + RESET);
+
+				System.out.println();
+				System.out.print("> ");
 				nivelDificuldade = Integer.parseInt(teclado.next());
+				System.out.println();
+				
 			}
 		} while(answer);
 	
+		
+		
 		constructor_class sud_level = new constructor_class();
 	
+		
+		
 		if (nivelDificuldade == 1) {
+			
 			sudoku = tabuleiroFacil;
-			System.out.print("     " + mensagemSistema + " Dificuldade: Fácil  " + reset);
+			
+			System.out.println(RED_BACKGROUND + "                                                     " + RESET);
+			System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+			System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "       " + RESET + GREEN_BACKGROUND_BRIGHT + " Dificuldade: Fácil " + BLACK + WHITE_BACKGROUND + "                        " + RESET + RED_BACKGROUND + " " + RESET);
+			System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+			System.out.println(RED_BACKGROUND + "                                                     " + RESET);
+			
 		}
 		if (nivelDificuldade == 2) {
+			
 			sudoku = tabuleiroMedio;
-			System.out.print("     " + mensagemSistema + " Dificuldade: Médio  " + reset);
+			
+			System.out.println(RED_BACKGROUND + "                                                     " + RESET);
+			System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+			System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "       " + RESET + BLACK + YELLOW_BACKGROUND +" Dificuldade: Média "+ RESET + BLACK + WHITE_BACKGROUND + "                        " + RESET + RED_BACKGROUND + " " + RESET);
+			System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+			System.out.println(RED_BACKGROUND + "                                                     " + RESET);
+			
 		}
 		if (nivelDificuldade == 3) {
+			
 			sudoku = tabuleiroDificil;
-			System.out.print("     " + mensagemSistema + " Dificuldade: Difícil" + reset);
+			
+			System.out.println(RED_BACKGROUND + "                                                     " + RESET);
+			System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+			System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "       " + RESET + BLACK + RED_BACKGROUND_BRIGHT +" Dificuldade: Difícil "+ RESET + BLACK + WHITE_BACKGROUND + "                      " + RESET + RED_BACKGROUND + " " + RESET);
+			System.out.println(RED_BACKGROUND + " " + RESET + BLACK + WHITE_BACKGROUND + "                                                   " + RESET + RED_BACKGROUND + " " + RESET);
+			System.out.println(RED_BACKGROUND + "                                                     " + RESET);
+			
 		}
 	
 		constructor_class constructor_class = new constructor_class();
@@ -69,8 +105,9 @@ public class main extends tables{
 			System.out.println();
 			constructor_class.exibeMatriz(sudoku);
 			
-			
+			System.out.println();
 			System.out.println("Especifique a coluna a linha e o numero respectivamente.");
+			System.out.println();
 			
 			do {
 				
@@ -80,13 +117,13 @@ public class main extends tables{
 				System.out.print("Coluna: ");
 				coluna = Integer.parseInt(teclado.next()) - 1;
 				
-				System.out.println("Linha: ");
+				System.out.print("Numero: ");
 				numeroEscolhido = Integer.parseInt(teclado.next());
 				
 				
 				
 				if (linha < 0 || linha > 8 || coluna < 0 || coluna > 8 || numeroEscolhido < 1 || numeroEscolhido > 9)
-					System.out.println(mensagemSistema + "Somente numeros de 1 à 9 são validos." + reset);
+					System.out.println(YELLOW_BACKGROUND + "Somente numeros de 1 à 9 são validos." + RESET);
 				else
 					answer = false;
 				
@@ -96,10 +133,16 @@ public class main extends tables{
 			
 			
 			if(slots[linha][coluna]) {
-				System.out.println(mensagemSistema + "Não pode colocar nada aqui." + reset);
+				System.out.println(YELLOW_BACKGROUND + "Não pode colocar nada aqui." + RESET);
 				constructor_class.permPositions(slots, sudoku);
 			} else {
-				constructor_class.blockMove(sudoku, linha, coluna, numeroEscolhido);
+				if (constructor_class.canOrNot(sudoku, linha, coluna, numeroEscolhido)) {
+					
+					sudoku[linha][coluna] = numeroEscolhido;
+					
+				} else {
+					constructor_class.blockMove(sudoku, linha, coluna, numeroEscolhido);
+				}
 			}
 			
 			if (constructor_class.checkTable(tipicoSudoku))
