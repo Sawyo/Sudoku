@@ -55,7 +55,7 @@ public class constructor_class extends tables{
 		
 		//Pode colocar nesta coluna?
 		for (int i = 0; i < matriz[0].length; i++) {
-			if (matriz[linha][i] == numero)
+			if (matriz[i][coluna] == numero)
 				return false;
 		}
 		
